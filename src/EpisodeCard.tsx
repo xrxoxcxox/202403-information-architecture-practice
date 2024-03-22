@@ -1,14 +1,14 @@
 type Props = {
   title: string
-  date: string
+  publishedAt: string
   point: number
   isRead?: boolean
   isPurchased?: boolean
 }
 
 export function EpisodeCard({
-  title,
-  date,
+  title = 'No title',
+  publishedAt = 'Undefined',
   point,
   isRead = false,
   isPurchased = false,
@@ -18,7 +18,11 @@ export function EpisodeCard({
     point === 0 || isPurchased
       ? 'border border-blue-600 text-blue-600'
       : 'bg-blue-600 text-white'
-  const pointLabel = isPurchased ? 'Purchased' : `${point} pt`
+  const pointLabel = isPurchased
+    ? 'Purchased'
+    : point === 0
+      ? 'Free'
+      : `${point} pt`
 
   return (
     <div className={`grid grid-cols-3 gap-x-4 px-4 py-2 ${background}`}>
@@ -30,7 +34,7 @@ export function EpisodeCard({
       <div className="col-start-2 col-end-4 flex items-center">
         <div className="flex flex-grow flex-col">
           <span className="text-sm text-neutral-900">{title}</span>
-          <span className="text-xs text-neutral-500">{date}</span>
+          <span className="text-xs text-neutral-500">{publishedAt}</span>
         </div>
         <span className={`rounded-full px-3 py-1 text-xs ${pointColor}`}>
           {pointLabel}
