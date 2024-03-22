@@ -60,6 +60,7 @@ function App() {
               type="number"
               value={point}
               min="0"
+              disabled={isRead}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 setPoint(Number(event.target.value))
               }
