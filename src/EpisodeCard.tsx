@@ -7,8 +7,8 @@ type Props = {
 }
 
 export function EpisodeCard({
-  title = 'No title',
-  publishedAt = 'Undefined',
+  title,
+  publishedAt,
   point,
   isRead = false,
   isPurchased = false,
@@ -32,8 +32,12 @@ export function EpisodeCard({
       />
       <div className="col-start-2 col-end-4 flex items-center">
         <div className="flex flex-grow flex-col">
-          <span className="text-sm text-neutral-900">{title}</span>
-          <span className="text-xs text-neutral-500">{publishedAt}</span>
+          <span className="text-sm text-neutral-900">
+            {title ? title : 'No title'}
+          </span>
+          <span className="text-xs text-neutral-500">
+            {publishedAt ? publishedAt : 'Undefined'}
+          </span>
         </div>
         <span
           className={`rounded-full px-3 py-1 text-xs tabular-nums ${pointColor}`}
